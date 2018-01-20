@@ -72,7 +72,7 @@ function Da(app, db, RandomString, multer, request, moment, Youtube) {
     app.post('/da/post/myda', (req, res)=>{
         var body = req.body
         db.Da.find({
-            auther_token : body.user_token
+            author_token : body.user_token
         }, (err, data)=>{
             if(err){
                 console.log('/ah/post/myda postfind Error')

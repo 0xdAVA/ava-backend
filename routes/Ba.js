@@ -157,6 +157,8 @@ function Ba(app, db, RandomString, multer, request, moment) {
                             master_delivery_code : '',
                             slave_delivery_number : '',
                             slave_delivery_code : '',
+                            master_address : '',
+                            slave_address : '',
                             comment : []
                         })
                         save_deal.save((err)=>{
@@ -165,7 +167,17 @@ function Ba(app, db, RandomString, multer, request, moment) {
                                 throw err
                             }
                             else {
-                                res.send(200, {success:true, message:"asdfas"})
+                                db.Ba.update({
+                                    post_token : body.post_token
+                                }, {$set:{state: 1}}, (err)=>{
+                                    if(err){
+                                        console.log('/ba/deal/add poststate Error')
+                                        throw err
+                                    }
+                                    else{
+                                        res.send(200, {success:true, message:"asdfas"})
+                                    }
+                                })
                             }
                         })
                     }
@@ -207,6 +219,63 @@ function Ba(app, db, RandomString, multer, request, moment) {
 
     app.post('/ba/deal/master_address', (req, res)=>{
         var body = req.body
+        db.BaDeal.update({
+            deal_token : body.deal_token
+        }, {$set:{master_address:body.master_address}}, (err)=>{
+            if(err){
+                console.log('/ba/deal/master_address update Error')
+                throw err
+            }
+            else {
+                res.send(200, {success:true, message:"Asdfasdfa"})
+            }
+        })
+    })
+
+    app.post('/ba/deal/slave_address', (req, res)=>{
+        var body = req.body
+        db.BaDeal.update({
+            deal_token : body.deal_token
+        }, {$set:{slave_address:body.slave_address}}, (err)=>{
+            if(err){
+                console.log('/ba/deal/slave_address update Error')
+                throw err
+            }
+            else {
+                res.send(200, {success:true, message:"Asdfasdfa"})
+            }
+        })
+    })
+
+    app.post('/ba/deal/comment', (req, res)=> {
+        var body = req.body
+        db.BaDeal.findOne({
+            deal_token : body.deal_token
+        }, (err, data)=>{
+            if(err){
+                console.log('/ba/deal/comment')
+                throw err
+            }
+            else if(data){
+                var array = new Array()
+                array = data.comment
+                array.push({username : body.username, message : body.message})
+                db.BaDeal.update({
+                    deal_token : body.deal_token
+                }, {$set:{comment:array}}, (err)=>{
+                    if(err){
+                        console.log('/ba/deal/comment commentupdate Error')
+                        throw err
+                    }
+                    else {
+                        res.send(200, {success:true, message:"asdfa"})
+                    }
+                })
+            }
+            else {
+                res.send(400, {success:false, message:"Not Founded"})
+            }
+        })
     })
 
 }

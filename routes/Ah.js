@@ -26,9 +26,9 @@ function Ah(app, db, RandomString, multer, request, moment) {
             else if(data){
                 var save_ah = new db.Ah({
                     post_token : RandomString.generate(15),
-                    auther : body.username,
+                    author : body.username,
                     profile_img : data.profile_img,
-                    auther_token : body.user_token,
+                    author_token : body.user_token,
                     title : body.title,
                     text : body.text,
                     date : moment().format(),
@@ -72,7 +72,7 @@ function Ah(app, db, RandomString, multer, request, moment) {
     app.post('/ah/post/myah', (req, res)=>{
         var body = req.body
         db.Ah.find({
-            auther_token : body.user_token
+            author_token : body.user_token
         }, (err, data)=>{
             if(err){
                 console.log('/ah/myah postfind Error')
