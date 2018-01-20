@@ -17,8 +17,8 @@ function Da(app, db, RandomString, multer, request, moment) {
         var body = req.body
         var save_da = new db.Da({
             post_token : RandomString.generate(10),
-            author : body.author,
-            author_token : body.author_token,
+            author : body.username,
+            author_token : body.user_token,
             title : body.title,
             text : body.text,
             date : moment().format('YYYY-MM-DD, h:mm:ss A'),
@@ -113,7 +113,7 @@ function Da(app, db, RandomString, multer, request, moment) {
                 })
             }
             else {
-                res.send(303,"asdf")
+                res.send(400,"asdf")
             }
         })
     })
@@ -147,7 +147,7 @@ function Da(app, db, RandomString, multer, request, moment) {
                 res.send(200, data)
             }
             else{
-                res.send(200, data)
+                res.send(200, [])
             }
         })
     })

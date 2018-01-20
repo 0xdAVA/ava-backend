@@ -139,8 +139,8 @@ function Ah(app, db, RandomString, multer, request, moment) {
     app.post('/ah/comment/add', (req, res)=>{
         var body = req.body
         var save_comment = new db.Comment({
-            author : body.author,
-            author_token : body.author_token,
+            author : body.username,
+            author_token : body.user_token,
             text : body.text,
             post_token : body.post_token,
             comment_token : RandomString.generate(10),

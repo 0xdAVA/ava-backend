@@ -3,7 +3,7 @@
 
 * 요청은 POST(FormUrlEncoded)로 처리하였습니다.
 
-* 기본 URL은 http://soylatte.kr:5000 입니다.
+* 기본 URL은 http://soylatte.kr:6974 입니다.
 
 ## Server Code
 ### 200
@@ -85,7 +85,7 @@
 
     HTTP : 401, {success:false, message:"데이터를 찾을수 없음"}
     
-#### /auth/edituser/img (회원프로필 수정)
+#### /auth/edituser/img (회원프로필사진 수정)
 >Requiring Params
     
     id, profile_img(이미지)
@@ -172,7 +172,7 @@
 #### /ah/comment/add (댓글 달기)
 >Requiring Params
 
-    author, author_token, text, post_token
+    username, user_token, text, post_token
     
 >Return Values
 >>Success
@@ -194,3 +194,83 @@
 ### Ba "바"
 
 ### Da "다"
+#### /da/post/add ("다" 새글 작성)
+>Requiring Params
+
+    username, user_token, title, text 
+    
+>Return Values
+>>Success
+
+    HTTP : 200, {success:true, message:"post Save Success"}
+    
+#### /da/post/list ("다" 글 목록)
+>Requiring Params
+
+    NO Param
+    
+>Return Values
+>>Success
+
+    HTTP : 200, JSONArray
+    
+#### /da/post/myda (내가 쓴 "다" 글 목록)
+>Requiring Params
+
+    user_token
+    
+>Return Values
+>>Success
+
+    HTTP : 200, JSONArray
+    
+#### /da/post/view (선택한 "다" 글 상세 정보)
+>Requiring Params
+
+    post_token
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, JSONObject
+    
+>>Not Founded
+
+    HTTP : 400, {success:false, message:"글을 찾을수 없습니다"}
+    
+#### /da/post/like ("다" 글 종아요 누르기)
+>Requiring Params
+
+    post_token
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, {success:true, message:"종아요 되었습니다"}
+    
+>>Not Founded
+
+    HTTP : 400, asdf
+    
+#### /da/post/rank ("다" 글 상위 5개 랭크 불러오기)
+>Requiring Params
+
+    No Param
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, JSONArray
+    
+#### /da/post/search ("디" 글 검색)
+>Requiring Params
+
+    title
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, JSONArray
+    
+
+
