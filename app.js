@@ -15,6 +15,8 @@ app.use(bodyParser.urlencoded({
     extended : false
 }))
 
+app.use('/profile_img', express.static('profile_img'))
+
 app.use(logger('dev'))
 
 app.use(passport.initialize());
@@ -25,5 +27,5 @@ app.listen(PORT, ()=>{
 })
 
 require('./routes/index')(app, db)
-require('./routes/auth')(app, db, RandomString)
+require('./routes/auth')(app, db, RandomString, multer)
 require('./routes/AppFacebook')(app, db, RandomString, passport, AppFacebookStrategy)

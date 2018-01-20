@@ -37,13 +37,14 @@ function AppFacebook(app, db, RandomString, passport, AppFacebookStrategy) {
                     res.send(200, data)
                 }
                 else {
-                    var save_user = {
+                    var save_user = new db.User({
                         username : req.user.displayName,
-                        id : body.req.user.id,
+                        id : req.user.id,
                         password : '',
                         user_token : RandomString.generate(10),
-                        facebook_token : req.param('access_token')
-                    }
+                        facebook_token : req.param('access_token'),
+                        profile_img : req.user.photos[0].value
+                    })
                     save_user.save((err)=>{
                         if(err){
                             console.log('/facebook/app usersave Error')

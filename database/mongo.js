@@ -34,6 +34,7 @@ var Ah_Schema = mongoose.Schema({
 })
 
 var Na_Schema = mongoose.Schema({
+    type : {type : Number},
     state : {type : Number},
     title : {type : String},
     text : {type : String},
