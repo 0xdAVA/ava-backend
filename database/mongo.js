@@ -98,8 +98,8 @@ var Da_Schema = mongoose.Schema({
     title : {type : String},
     text : {type : String},
     date : {type : String},
-    photo : {type : String}
-
+    photo : {type : String},
+    like : {type : Number}
 })
 
 var Comment_Schema = mongoose.Schema({
@@ -109,7 +109,6 @@ var Comment_Schema = mongoose.Schema({
     post_token : {type : String},
     comment_token : {type : String},
     date : {type : String}
-
 })
 
 

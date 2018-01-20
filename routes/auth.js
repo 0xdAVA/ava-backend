@@ -99,7 +99,7 @@ function auth(app, db, RandomString, multer){
         })
     })
 
-    app.post('/auth/edituser/img', upload.single('file'), (req, res)=>{
+    app.post('/auth/edituser/img', upload.single('profile_img'), (req, res)=>{
         var body = req.body
         db.User.update({
             id : body.id
@@ -126,5 +126,6 @@ function auth(app, db, RandomString, multer){
             }
         })
     })
+
 
 }
