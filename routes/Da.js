@@ -34,8 +34,8 @@ function Da(app, db, RandomString, multer, request, moment, Youtube) {
                     author_token : body.user_token,
                     title : body.title,
                     text : body.text,
-                    date : moment().format('YYYY-MM-DD, h:mm:ss A'),
-                    photo : "http://soylatte.kr:6974/"+req.file.path,
+                    date : moment().format(),
+                    photo : "http://soylatte.kr:3000/"+req.file.path,
                     like : 0,
                     like_user : []
                 })

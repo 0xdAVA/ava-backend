@@ -92,7 +92,9 @@ var BaDeal_Schema = mongoose.Schema({
     ba_slave : {type : Object},
     state : {type : Number},
     master_delivery_number : {type : String},
+    master_delivery_code : {type : String},
     slave_delivery_number : {type : String},
+    slave_delivery_code : {type : String},
     comment : {type : Array}
 })
 

@@ -27,7 +27,7 @@ function Na(app, db, RandomString, multer, request, moment) {
                     state : 0,
                     title : body.title,
                     text : body.text,
-                    date : moment().format('YYYY-MM-DD, h:mm:ss A'),
+                    date : moment().format(),
                     quality_status : body.quality_status,
                     tag : body.tag,
                     profile_img : data.profile_img,
@@ -35,7 +35,7 @@ function Na(app, db, RandomString, multer, request, moment) {
                     author_token : body.user_token,
                     post_token : RandomString.generate(10),
                     send_type : body.send_type,
-                    photo : "http://soylatte.kr:6974/"+req.file.path
+                    photo : "http://soylatte.kr:3000/"+req.file.path
                 })
 
                 save_post.save((err)=>{
@@ -93,7 +93,7 @@ function Na(app, db, RandomString, multer, request, moment) {
             text : body.text,
             post_token : body.post_token,
             comment_token : RandomString.generate(10),
-            date : moment.format('YYYY-MM-DD, h:mm:ss A')
+            date : moment.format()
         })
 
         save_comment.save((err)=>{
