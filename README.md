@@ -410,5 +410,135 @@
         "photo": "https://i.ytimg.com/vi/KDR9gbBZJgg/default.jpg"
     }
     
+## Schema
+### User_Schema
 
+    username : {type : String},
+    id : {type : String},
+    password : {type : String},
+    user_token : {type : String},
+    facebook_token : {type : String},
+    profile_img : {type : String}
+    
+### Ah_Schema
 
+    post_token : {type : String},
+    profile_img : {type : String},
+    author : {type : String},
+    author_token : {type : String},
+    title : {type : String},
+    text : {type : String},
+    date : {type : String},
+    photo : {type : String},
+    like : {type : Number},
+    like_user : {type : Array}
+
+### Na_Schema
+
+    state : {type : Number},
+    title : {type : String},
+    profile_img : {type : String},
+    text : {type : String},
+    date : {type : String},
+    quality_status : {type : Number},
+    tag : {type : Number},
+    author : {type : String},
+    author_token : {type : String},
+    post_token : {type : String},
+    send_type : {type : Number},
+    photo : {type : String}
+    
+### NaDeal_Schema
+
+    deal_token : {type : String},
+    master_token : {type : String},
+    slave_token : {type : String},
+    post_token : {type : String},
+    master_name : {type : String},
+    slave_name : {type : String},
+    state : {type : Number},
+    delivery_number : {type : String},
+    delevery_code : {type : String},
+    item : {type : String},
+    address : {type : String},
+    comment : {type : Array}
+    
+
+### Ba_Schema
+
+    type : {type : Number},
+    state : {type : Number},
+    title : {type : String},
+    profile_img : {type : String},
+    text : {type : String},
+    date : {type : String},
+    quality_status : {type : Number},
+    tag : {type : Number},
+    author : {type : String},
+    author_token : {type : String},
+    post_token : {type : String},
+    send_type : {type : Number},
+    photo : {type : String},
+    comment :{type : Array}
+    
+
+### BaDeal_Schema
+
+    deal_token : {type : String},
+    master_token : {type : String},
+    slave_token : {type : String},
+    master_name : {type : String},
+    slave_name : {type : String},
+    ba_master : {type : Object},
+    ba_slave : {type : Object},
+    state : {type : Number},
+    master_delivery_number : {type : String},
+    master_delivery_code : {type : String},
+    slave_delivery_number : {type : String},
+    slave_delivery_code : {type : String},
+    master_address : {type : String},
+    slave_address : {type : String},
+    comment : {type : Array}
+
+### Da_Schema
+
+    post_token : {type : String},
+    author : {type : String},
+    author_token : {type : String},
+    profile_img : {type : String},
+    title : {type : String},
+    text : {type : String},
+    date : {type : String},
+    photo : {type : String},
+    like : {type : Number},
+    like_user : {type : Array}
+
+### Comment_Schema
+
+    author : {type : String},
+    author_token : {type : String},
+    text :  {type : String},
+    post_token : {type : String},
+    comment_token : {type : String},
+    date : {type : String}
+
+## Response Frame
+### Deal_Message
+
+    {
+        username : String,
+        message : String
+        
+    }
+    
+### Ba_Comment
+
+    title : String,
+    text : String,
+    quality_status : Number,
+    tag : Number,
+    author : String,
+    author_token : String,
+    send_type : Number,
+    photo : String
+    

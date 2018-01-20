@@ -278,4 +278,29 @@ function Ba(app, db, RandomString, multer, request, moment) {
         })
     })
 
+    app.post('/ba/deal/delivery/search', (req, res)=>{
+        var body = req.body
+        var options = { method: 'GET',
+            url: 'http://info.sweettracker.co.kr/api/v1/trackingInfo',
+            qs:
+                {
+                    t_key: 'Ll6DqNHj70Gpqnl03ev2aQ',
+                    t_code: body.code,
+                    t_invoice: body.number
+                },
+            headers:
+                {
+                    'postman-token': '123d4c9c-5b29-7b12-361a-d28320f6f13e',
+                    'cache-control': 'no-cache'
+                }
+        };
+
+        request(options, (error, response, body)=>{
+            if (error) throw new Error(error);
+            var data = JSON.parse(body)
+            res.send(200, data)
+        });
+    })
+
+
 }
