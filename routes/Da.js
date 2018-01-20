@@ -118,7 +118,7 @@ function Da(app, db, RandomString, multer, request, moment, Youtube) {
             else if(data){
                 var array = new Array()
                 array = data.like_user
-                array.push(user_token)
+                array.push(body.user_token)
                 db.Da.update({
                     post_token : body.post_token
                 }, {$set:{like : data.like+1, like_user : array}}, (err)=>{

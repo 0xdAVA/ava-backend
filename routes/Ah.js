@@ -118,7 +118,7 @@ function Ah(app, db, RandomString, multer, request, moment) {
             else if(data){
                 var array = new Array()
                 array = data.like_user
-                array.push(user_token)
+                array.push(body.user_token)
                 db.Ah.update({
                     post_token : body.post_token
                 }, {$set:{like : data.like+1, like_user : array}}, (err)=>{
