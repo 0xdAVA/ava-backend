@@ -1,9 +1,9 @@
-# 해커톤
-* 해커톤 Server
+# AVA
+* AVA Backend Server
 
 * 요청은 POST(FormUrlEncoded)로 처리하였습니다.
 
-* 기본 URL은 [URL]:5000 입니다.
+* 기본 URL은 http://soylatte.kr:5000 입니다.
 
 ## Server Code
 ### 200
