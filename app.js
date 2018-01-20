@@ -9,7 +9,7 @@ var AppFacebookStrategy = require('passport-facebook-token')
 var multer = require('multer')
 var app = express()
 var logger = require('morgan')
-var PORT = process.env.PORT || 6974
+var PORT = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({
     extended : false

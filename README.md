@@ -3,7 +3,7 @@
 
 * 요청은 POST(FormUrlEncoded)로 처리하였습니다.
 
-* 기본 URL은 http://soylatte.kr:6974 입니다.
+* 기본 URL은 http://soylatte.kr:3000 입니다.
 
 ## Server Code
 ### 200
