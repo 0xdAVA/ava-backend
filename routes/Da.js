@@ -20,25 +20,35 @@ function Da(app, db, RandomString, multer, request, moment, Youtube) {
 
     app.post('/da/post/add', upload.single('file') ,(req, res)=>{
         var body = req.body
-        var save_da = new db.Da({
-            post_token : RandomString.generate(10),
-            author : body.username,
-            author_token : body.user_token,
-            title : body.title,
-            text : body.text,
-            date : moment().format('YYYY-MM-DD, h:mm:ss A'),
-            photo : "http://soylatte.kr:6974/"+req.file.path,
-            like : 0,
-            like_user : []
-        })
-
-        save_da.save((err)=>{
+        db.User.findOne({
+            user_token : body.user_token
+        }, (err, data)=>{
             if(err){
-                console.log('/da/post/add postsave Error')
+                console.log('/da/post/add userfind Error')
                 throw err
             }
-            else{
-                res.send(200, {success:true, message:"post Save Success"})
+            else if(data){
+                var save_da = new db.Da({
+                    post_token : RandomString.generate(10),
+                    author : body.username,
+                    author_token : body.user_token,
+                    title : body.title,
+                    text : body.text,
+                    date : moment().format('YYYY-MM-DD, h:mm:ss A'),
+                    photo : "http://soylatte.kr:6974/"+req.file.path,
+                    like : 0,
+                    like_user : []
+                })
+
+                save_da.save((err)=>{
+                    if(err){
+                        console.log('/da/post/add postsave Error')
+                        throw err
+                    }
+                    else{
+                        res.send(200, {success:true, message:"post Save Success"})
+                    }
+                })
             }
         })
 

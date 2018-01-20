@@ -24,6 +24,7 @@ var User_Schema = mongoose.Schema({
 
 var Ah_Schema = mongoose.Schema({
     post_token : {type : String},
+    profile_img : {type : String},
     auther : {type : String},
     auther_token : {type : String},
     title : {type : String},
@@ -37,6 +38,7 @@ var Ah_Schema = mongoose.Schema({
 var Na_Schema = mongoose.Schema({
     state : {type : Number},
     title : {type : String},
+    profile_img : {type : String},
     text : {type : String},
     date : {type : String},
     quality_status : {type : Number},
@@ -67,6 +69,7 @@ var Ba_Schema = mongoose.Schema({
     type : {type : Number},
     state : {type : Number},
     title : {type : String},
+    profile_img : {type : String},
     text : {type : String},
     date : {type : String},
     quality_status : {type : Number},
@@ -90,13 +93,14 @@ var BaDeal_Schema = mongoose.Schema({
     state : {type : Number},
     master_delivery_number : {type : String},
     slave_delivery_number : {type : String},
-    comment : Array
+    comment : {type : Array}
 })
 
 var Da_Schema = mongoose.Schema({
     post_token : {type : String},
     author : {type : String},
     author_token : {type : String},
+    profile_img : {type : String},
     title : {type : String},
     text : {type : String},
     date : {type : String},

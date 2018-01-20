@@ -15,29 +15,41 @@ function Na(app, db, RandomString, multer, request, moment) {
 
     app.post('/na/post/add', upload.single('file') ,(req, res)=>{
         var body = req.body
-        var save_post = new db.Na({
-            state : 0,
-            title : body.title,
-            text : body.text,
-            date : moment().format('YYYY-MM-DD, h:mm:ss A'),
-            quality_status : body.quality_status,
-            tag : body.tag,
-            author : body.username,
-            author_token : body.user_token,
-            post_token : RandomString.generate(10),
-            send_type : body.send_type,
-            photo : "http://soylatte.kr:6974/"+req.file.path
-        })
-
-        save_post.save((err)=>{
+        db.User.findOne({
+            user_token : body.user_token
+        }, (err, data)=>{
             if(err){
-                console.log('/na/post/add postsave Error')
+                console.log('/na/post/add userfind Error')
                 throw err
             }
-            else {
-                res.send(200, {success:true, message:"포스트 성공"})
+            else if(data){
+                var save_post = new db.Na({
+                    state : 0,
+                    title : body.title,
+                    text : body.text,
+                    date : moment().format('YYYY-MM-DD, h:mm:ss A'),
+                    quality_status : body.quality_status,
+                    tag : body.tag,
+                    profile_img : data.profile_img,
+                    author : body.username,
+                    author_token : body.user_token,
+                    post_token : RandomString.generate(10),
+                    send_type : body.send_type,
+                    photo : "http://soylatte.kr:6974/"+req.file.path
+                })
+
+                save_post.save((err)=>{
+                    if(err){
+                        console.log('/na/post/add postsave Error')
+                        throw err
+                    }
+                    else {
+                        res.send(200, {success:true, message:"포스트 성공"})
+                    }
+                })
             }
         })
+
     })
 
     app.post('/na/post/list', (req, res)=>{

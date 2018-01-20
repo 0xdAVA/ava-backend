@@ -16,25 +16,38 @@ function Ah(app, db, RandomString, multer, request, moment) {
     app.post('/ah/post/add', upload.single('file') ,(req, res)=>{
         var body = req.body
 
-        var save_ah = new db.Ah({
-            post_token : RandomString.generate(15),
-            auther : body.username,
-            auther_token : body.user_token,
-            title : body.title,
-            text : body.text,
-            date : moment().format('YYYY-MM-DD, h:mm:ss A'),
-            photo : "http://soylatte.kr:6974/"+req.file.path,
-            like : 0,
-            like_user : []
-        })
-
-        save_ah.save((err)=>{
+        db.User.findOne({
+            user_token : body.user_token
+        }, (err, data)=>{
             if(err){
-                console.log('/ah/add ahsave Error')
+                console.log('/ah/post/add userfind Error')
                 throw err
             }
-            else {
-                res.send(200, {success:true, message:"아껴쓰기 등록완료!"})
+            else if(data){
+                var save_ah = new db.Ah({
+                    post_token : RandomString.generate(15),
+                    auther : body.username,
+                    profile_img : data.profile_img,
+                    auther_token : body.user_token,
+                    title : body.title,
+                    text : body.text,
+                    date : moment().format('YYYY-MM-DD h:mm:ss A'),
+                    photo : "http://soylatte.kr:6974/"+req.file.path,
+                    like : 0,
+                    like_user : []
+                })
+                save_ah.save((err)=>{
+                    if(err){
+                        console.log('/ah/add ahsave Error')
+                        throw err
+                    }
+                    else {
+                        res.send(200, {success:true, message:"아껴쓰기 등록완료!"})
+                    }
+                })
+            }
+            else{
+                res.send(400, "Asdfasdklgjhasldkjg")
             }
         })
 
@@ -148,7 +161,7 @@ function Ah(app, db, RandomString, multer, request, moment) {
             text : body.text,
             post_token : body.post_token,
             comment_token : RandomString.generate(10),
-            date : moment.format('YYYY-MM-DD, h:mm:ss A')
+            date : moment.format('YYYY-MM-DD h:mm:ss A')
         })
 
         save_comment.save((err)=>{
