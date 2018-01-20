@@ -24,7 +24,6 @@ function Ah(app, db, RandomString, multer, request, moment) {
                 throw err
             }
             else if(data){
-                var date = new Date(moment().format('YYYY-MM-DD h:mm:ss A'))
                 var save_ah = new db.Ah({
                     post_token : RandomString.generate(15),
                     auther : body.username,
@@ -32,7 +31,7 @@ function Ah(app, db, RandomString, multer, request, moment) {
                     auther_token : body.user_token,
                     title : body.title,
                     text : body.text,
-                    date : date,
+                    date : moment().format(),
                     photo : "http://soylatte.kr:6974/"+req.file.path,
                     like : 0,
                     like_user : []
@@ -162,7 +161,7 @@ function Ah(app, db, RandomString, multer, request, moment) {
             text : body.text,
             post_token : body.post_token,
             comment_token : RandomString.generate(10),
-            date : moment.format('YYYY-MM-DD h:mm:ss A')
+            date : moment().format()
         })
 
         save_comment.save((err)=>{
