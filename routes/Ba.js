@@ -37,7 +37,7 @@ function Ba(app, db, RandomString, multer, request, moment) {
                     post_token : RandomString.generate(10),
                     send_type : body.send_type,
                     photo : "http://soylatte.kr:3000/"+req.file.path,
-                    comment :{type : Array}
+                    comment : []
                 })
                 save_post.save((err)=>{
                     if(err){
@@ -129,7 +129,7 @@ function Ba(app, db, RandomString, multer, request, moment) {
     app.post('/ba/deal/add', (req, res)=>{
         var body = req.body
         db.User.findOne({
-            user_token : master_token
+            user_token : body.master_token
         }, (err, master_user_data)=>{
             if(err){
                 console.log('/ba/deal/add masteruser find Error')

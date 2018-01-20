@@ -314,6 +314,121 @@
     HTTP : 200, {success:true, message:"asdf"}
 
 ### Ba "바"
+#### /ba/post/add ("바" 새글 작성)
+>Requiring Params
+
+    user_token, type, title, text, quality_status, tag, username, send_type
+
+>Return Values
+>>Success
+
+    HTTP : 200
+
+#### /ba/post/list ("바" 글 목록)
+>Requiring Params
+
+    NO Param
+    
+>Return Values
+>>Success
+
+    HTTP : 200, JSONArray  
+    
+#### /ba/post/view ("바" 글 상세 정보)
+>Requiring Params
+
+    post_token
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, JSONObject
+    
+>>Not Founded
+
+    HTTP : 400, {success:false, message:"글을 찾을수 없습니다"}
+    
+#### /ba/comment/add ("바" 댓글 작성)
+>Requiring Params
+
+    post_token, title, text, quality_status, tag, username, send_type, file(상품사진)
+    
+>Return Values
+>>Success
+
+    HTTP : 200
+    
+#### /ba/deal/add ("바" 새 거래 생성)
+>Requiring Params
+
+    master_token, slave_token, master_name, slave_name
+
+>Return Values
+>>Success
+
+    HTTP : 200
+    
+#### /ba/deal/master_delivery (마스터가 슬레이브에게 보내는 택배 송장등록)
+>Requiring Params
+
+    deal_token, master_delivery_code, master_delivery_number
+    
+>Return Values
+>>Success
+
+    HTTP : 200
+    
+
+#### /ba/deal/slave_delivery (슬레이브가 마스터에게 보내는 택배 송장등록)
+>Requiring Params
+
+    deal_token, slave_delivery_code, slave_delivery_number
+    
+>Return Values
+>>Success
+
+    HTTP : 200
+    
+#### /ba/deal/master_address (마스터가 슬레이브에게 보내는 주소)
+>Requiring Params
+
+    deal_token, master_address
+    
+>Return Values
+>>Success
+
+    HTTP : 200
+
+#### /ba/deal/slave_address (슬레이브가 마스터에게 보내는 주소)
+>Requiring Params
+
+    deal_token, slave_address
+    
+>Return Values
+>>Success
+
+    HTTP : 200
+    
+#### /ba/deal/comment (교환을 하며 서로 주고받는 채팅)
+>Requiring Params
+
+    deal_token, username, message
+    
+>Return Values
+>>Success
+
+    HTTP : 200
+    
+#### /ba/deal/delivery/search (택배 송장 검색)
+>Requiring Params
+
+    code, number
+    
+>Return Values
+>>Success
+
+    HTTP : 200, JSONObject
+    
 
 ### Da "다"
 #### /da/post/add ("다" 새글 작성)
@@ -528,7 +643,6 @@
     {
         username : String,
         message : String
-        
     }
     
 ### Ba_Comment
