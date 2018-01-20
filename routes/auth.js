@@ -99,6 +99,24 @@ function auth(app, db, RandomString, multer){
         })
     })
 
+    app.post('/auth/auto', (req, res)=>{
+        var body = req.body
+        db.User.findOne({
+            user_token : body.token
+        },(err, data)=>{
+            if(err){
+                console.log('/auth/auth asjhgaksdjg')
+                throw err
+            }
+            else if(data){
+                res.send(200, data)
+            }
+            else {
+                res.send(400, "Asdfasdf")
+            }
+        })
+    })
+
     app.post('/auth/edituser/img', upload.single('profile_img'), (req, res)=>{
         var body = req.body
         db.User.update({
