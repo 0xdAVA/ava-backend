@@ -1,6 +1,6 @@
 module.exports = Da
 
-function Da(app, db, RandomString, multer, request, moment) {
+function Da(app, db, RandomString, multer, request, moment, Youtube) {
 
     var storage = multer.diskStorage({
         destination: (req, file, cb)=>{
@@ -10,6 +10,11 @@ function Da(app, db, RandomString, multer, request, moment) {
             cb(null, RandomString.generate(10)+'.'+file.mimetype.split('/')[1])
         }
     })
+
+    var opts = {
+        maxResults: 10,
+        key: 'AIzaSyAIkpfsnh7XgMFUkpZYDi3sm97R6dihBA4'
+    };
 
     var upload = multer({ storage: storage })
 
@@ -154,6 +159,25 @@ function Da(app, db, RandomString, multer, request, moment) {
                 res.send(200, [])
             }
         })
+    })
+
+    app.post('/da/youtube', (req, res)=>{
+        Youtube('아껴쓰기', opts, (err, results)=>{
+            if(err) return console.log(err);
+            console.log(results)
+            var array = new Array()
+            for (var i=0;i<5;i++){
+                array.push({
+                    link : results[i].link,
+                    title : results[i].title,
+                    photo : results[i].thumbnails.default.url
+                })
+            }
+            res.send(200, array)
+
+        });
+
+
     })
 
 }

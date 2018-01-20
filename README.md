@@ -394,5 +394,21 @@
     
     HTTP : 200, JSONArray
     
+    
+#### /da/youtube ("다" 유투브 TOP 5)
+>Requiring Params
+
+    No Params
+    
+>Return Values
+>>Success
+
+    HTTP : 200, JSONArray  
+    {
+        "link": "https://www.youtube.com/watch?v=KDR9gbBZJgg",
+        "title": "살림의 여왕 - Housekeeping_생활비 다이어트 아나바다_#001",
+        "photo": "https://i.ytimg.com/vi/KDR9gbBZJgg/default.jpg"
+    }
+    
 
 

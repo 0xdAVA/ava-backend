@@ -1,6 +1,7 @@
 var express = require('express')
 var bodyParser = require('body-parser')
 var db = require('./database/mongo')
+var Youtube = require('youtube-search');
 var request = require("request")
 var moment = require('moment')
 var RandomString = require('randomstring')
@@ -36,4 +37,4 @@ require('./routes/AppFacebook')(app, db, RandomString, passport, AppFacebookStra
 require('./routes/Ah')(app, db, RandomString, multer, request, moment)
 require('./routes/Na')(app, db, RandomString, multer, request, moment)
 require('./routes/Ba')(app, db, RandomString, multer, request, moment)
-require('./routes/Da')(app, db, RandomString, multer, request, moment)
+require('./routes/Da')(app, db, RandomString, multer, request, moment, Youtube)
