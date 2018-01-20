@@ -57,7 +57,9 @@ var NaDeal_Schema = mongoose.Schema({
     slave_name : {type : String},
     state : {type : Number},
     delivery_number : {type : String},
+    delevery_code : {type : String},
     item : {type : String},
+    address : {type : String},
     comment : {type : Array}
 })
 

@@ -119,7 +119,7 @@
 #### /ah/post/add ("아" 새글 작성)
 >Requiring Params
 
-    username, user_token, title, text
+    username, user_token, title, text, file
     
 >Return Values
 >>Success
@@ -205,6 +205,113 @@
     HTTP : 200, JSONArray
     
 ### Na "나"
+#### /na/post/add ("나" 새글 작성)
+>Requiring Params
+
+    title, text, quality_status, tag, username, user_token, send_type
+    
+>Return Values
+>>Success
+
+    HTTP : 200, {success:true, message:"포스트 성공"}
+    
+#### /na/post/list ("나" 글 목록)
+>Requiring Params
+
+    No Param
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, JSONArray
+    
+#### /na/post/view ("나" 글 상세 정보)
+>Requiring Params
+
+    post_token
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, JSONObject
+    
+>>Not Founded
+
+    HTTP : 400, {success:false, message:"글을 찾을수 없습니다"}
+    
+#### /na/comment/add ("나" 선착순 댓글 작성)
+>Requiring Params
+
+    username, user_token, text, post_token
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, {success:true, message:"댓글등록 성공"}
+    
+#### /na/deal/add ("나" 나눔매칭시)
+>Requiring Params
+
+    post_token, master_token, slave_token, post_token, master_name, slave_name
+    
+>Return Values
+>>Success
+
+    HTTP : 200, {success:true, message:"asdf"}
+    
+#### /na/deal/comment ("나" 나눔시 채팅)
+>Requiring Params
+
+    deal_token, username, message
+
+>Return Values
+>>Success
+
+    HTTP : 200, {success:true, message:"asdfa"}
+  
+>>Not Founded
+
+    HTTP : 400, {success:false, message:"Not Founded"}
+    
+#### /na/deal/address ("나" 나눔시 수령지 주소 등록)
+>Requiring Params
+
+    deal_token, addresss
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, {success:true, message:"Asdf"}
+    
+#### /na/deal/delivery ("나" 나눔시 운송장번호 등록)
+>Requiring Params
+
+    deal_token, delivery_number, delivery_code
+    
+>Return Values
+>>Success
+
+    HTTP : 200, {success:true, message:"Asdf"}
+    
+#### /na/deal/delivery/search (운송장 번호 검색)
+>Requiring Params
+
+    code, number
+    
+>Return Values
+>>Success
+
+    HTTP : 200, JSONObject
+    
+#### /na/deal/complete ("나" 나눔 성공시 상태 코드 변경)
+>Requiring Params
+
+    post_token, deal_token
+    
+>Return Values
+>>Success
+    
+    HTTP : 200, {success:true, message:"asdf"}
 
 ### Ba "바"
 
@@ -212,7 +319,7 @@
 #### /da/post/add ("다" 새글 작성)
 >Requiring Params
 
-    username, user_token, title, text 
+    username, user_token, title, text, file
     
 >Return Values
 >>Success

@@ -7,7 +7,6 @@ var RandomString = require('randomstring')
 var passport = require('passport')
 var AppFacebookStrategy = require('passport-facebook-token')
 var multer = require('multer')
-// var io = require('socket.io').listen(5000)
 var app = express()
 var logger = require('morgan')
 var PORT = process.env.PORT || 6974
