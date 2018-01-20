@@ -24,7 +24,8 @@ function Ah(app, db, RandomString, multer, request, moment) {
             text : body.text,
             date : moment().format('YYYY-MM-DD, h:mm:ss A'),
             photo : "http://soylatte.kr:6974/"+req.file.path,
-            like : 0
+            like : 0,
+            like_user : []
         })
 
         save_ah.save((err)=>{
@@ -102,9 +103,12 @@ function Ah(app, db, RandomString, multer, request, moment) {
                 throw err
             }
             else if(data){
+                var array = new Array()
+                array = data.like_user
+                array.push(user_token)
                 db.Ah.update({
                     post_token : body.post_token
-                }, {$set:{like : data.like+1}}, (err)=>{
+                }, {$set:{like : data.like+1, like_user : array}}, (err)=>{
                     if(err){
                         console.log('/ah/post/like update Error')
                         throw err

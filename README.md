@@ -37,6 +37,21 @@
 
 ## API DOCUMENT
 
+### Facebook
+#### /facebook/app (페이스북 로그인)
+>Requiring Params
+
+    access_token
+    
+>Return Values
+>>Success
+
+    HTTP : 200, JSONObject
+    
+>>Not Founded
+
+    HTTP : 401, Can't find User On Facebook. It May Be Unusable.
+
 ### Auth
 
 #### /auth/login (로그인)
@@ -148,7 +163,7 @@
 #### /ah/post/like (글 좋아요 누르기)
 >Requiring Params
 
-    post_token
+    post_token, user_token
     
 >Return Values
 >>Success
@@ -241,7 +256,7 @@
 #### /da/post/like ("다" 글 종아요 누르기)
 >Requiring Params
 
-    post_token
+    post_token, user_token
     
 >Return Values
 >>Success

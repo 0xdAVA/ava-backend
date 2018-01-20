@@ -30,11 +30,11 @@ var Ah_Schema = mongoose.Schema({
     text : {type : String},
     date : {type : String},
     photo : {type : String},
-    like : {type : Number}
+    like : {type : Number},
+    like_user : {type : Array}
 })
 
 var Na_Schema = mongoose.Schema({
-    type : {type : Number},
     state : {type : Number},
     title : {type : String},
     text : {type : String},
@@ -99,7 +99,8 @@ var Da_Schema = mongoose.Schema({
     text : {type : String},
     date : {type : String},
     photo : {type : String},
-    like : {type : Number}
+    like : {type : Number},
+    like_user : {type : Array}
 })
 
 var Comment_Schema = mongoose.Schema({
