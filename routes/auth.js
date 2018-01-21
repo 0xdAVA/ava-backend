@@ -121,7 +121,7 @@ function auth(app, db, RandomString, multer){
         var body = req.body
         db.User.update({
             id : body.id
-        },{$set:{profile_img : "http://soylatte.kr:6974/"+req.file.path}}, (err)=>{
+        },{$set:{profile_img : "http://soylatte.kr:3000/"+req.file.path}}, (err)=>{
             if(err){
                 console.log('/auth/edituser/img useredit Error')
                 throw err
